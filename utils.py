@@ -3,7 +3,7 @@ import json
 import subprocess
 
 # constants:
-JSON_PATH = 'language_config.json'
+JSON_PATH = '/Users/asafshul/Documents/projects.nosync/auto_language_switcher_MacOS/language_config.json'
 
 CHANGE_LANGUAGE_SCRIPT = "osascript -e 'tell application \"System Events\" to tell process \"SystemUIServer\" to " \
                          "keystroke space using {control down}' "

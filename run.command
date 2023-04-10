@@ -1,0 +1,1 @@
+python /Users/asafshul/Documents/projects.nosync/auto_language_switcher_MacOS/language_switcher.py
