@@ -1,9 +1,13 @@
 # imports:
-import time
-from utils import *
+from threading import Lock
+from pynput import keyboard, mouse
 
-# constants:
-LOOP_ITER_DELAY = 0.5  # (seconds) change as you see fit:
+from utils import *
+from typing_fixer import register_key, reset_keys
+
+prev_active_window = None
+prev_active_window_lock = Lock()
+config = load_json(CONFIG_JSON_PATH)
 
 
 # functions:
@@ -18,10 +22,10 @@ def change_keyboard_language(language_config: dict, active_window_title: str):
     wanted_layout = language_config.get(active_window_title)
 
     # Check the current keyboard layout:
-    current_layout = run_script(GET_CURRENT_LAYOUT_SCRIPT)
+    current_layout = get_current_layout()
 
     # If the wanted layout is not the current layout, change it:
-    if wanted_layout and (wanted_layout not in current_layout):
+    if wanted_layout and (wanted_layout != current_layout):
         print(f'active_window changed to: {active_window_title} -> Changing keyboard layout to: "{wanted_layout}"...')
         # Change the keyboard layout to English
         subprocess.call(CHANGE_LANGUAGE_SCRIPT, shell=True)
@@ -29,25 +33,24 @@ def change_keyboard_language(language_config: dict, active_window_title: str):
         print(f'active_window changed to: {active_window_title} -> Keyboard layout is already correct.')
 
 
-def runner() -> None:
+def window_change(x, y, button, pressed):
     """
-    The main loop of the program.
+    Change the keyboard layout when the active window changes, also reset the keys_pressed list.
     :return: None
     """
-    # Load the language config:
-    config = load_json()
-
-    # Run the main loop:
-    prev_active_window = None
-    while True:
-        # check if the active window changed:
-        active_window = run_script(GET_ACTIVE_WINDOW_SCRIPT)
-        if (not prev_active_window) or (active_window != prev_active_window):
-            change_keyboard_language(config, active_window)
+    global prev_active_window, prev_active_window_lock, config
+    active_window = run_script(GET_ACTIVE_WINDOW_SCRIPT)
+    if (not prev_active_window) or (active_window != prev_active_window):
+        change_keyboard_language(config, active_window)
+        with prev_active_window_lock:
             prev_active_window = active_window
-        time.sleep(LOOP_ITER_DELAY)
+
+    reset_keys(x, y, button, pressed)
 
 
 # main:
 if __name__ == '__main__':
-    runner()
+    with keyboard.Listener(on_press=register_key) as k_listener:
+        with mouse.Listener(on_click=window_change) as m_listener:
+            k_listener.join()
+            m_listener.join()
