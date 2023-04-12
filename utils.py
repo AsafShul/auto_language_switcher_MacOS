@@ -79,7 +79,6 @@ def convert_typing(layout, stack):
     :param layout: current keyboard language.
     :return: the converted text.
     """
-    print(layout, get_current_layout())
     if layout != MAIN_LAYOUT and layout != SECONDARY_LAYOUT:
         return copy.deepcopy(stack)
     else:
