@@ -22,7 +22,7 @@ ACTIVATION_SIZE = len(PRIME_TYPING_CHANGE_ACTIVATION)
 
 
 CONFIG_JSON_PATH = os.path.join(WORK_DIR, 'language_config.json')
-CONVERSION_JSON_PATH = os.path.join(WORK_DIR, 'conversion_chart_heb_eng.json')
+CONVERSION_JSON_PATH = os.path.join(WORK_DIR, 'conversion_chart_ABC_Hebrew.json')
 
 LAYOUT_RETURN_PREFIX = '"KeyboardLayout Name" = '
 LAYOUT_RETURN_POSTFIX = ';\n    }\n)'
