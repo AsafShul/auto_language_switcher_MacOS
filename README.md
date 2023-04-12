@@ -3,6 +3,9 @@
 no more need to manually change the language when switching between apps, or re-write mistyped text!
 
 this repo will automatically change the keyboard input language based on the specific app preferences, and fix mistypes.
+
+
+
 <img width="625" alt="image" src="https://user-images.githubusercontent.com/44872433/231365942-d7fdc5f6-2eaf-44bd-9924-e417b8e8bb4a.png">
 <img width="627" alt="image" src="https://user-images.githubusercontent.com/44872433/231366013-d33cb7eb-954a-4bc9-803d-4f4ab82ac91b.png">
 
