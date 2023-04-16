@@ -44,7 +44,7 @@ Congratulations! now, you can run the script by double-clicking the alias on the
 On running, a terminal window will open and the script will run in the background. you can see when language
 is changed by the prints in the terminal.
 
-<img width="582" alt="Screen Shot 2023-04-10 at 16 28 47" src="https://user-images.githubusercontent.com/44872433/230910368-ba000749-84b0-4b83-9f9d-69ae8a55fb3f.png">
+<img width="571" alt="image" src="https://user-images.githubusercontent.com/44872433/232324859-f3b7c913-02f7-4159-bc42-0798b0da8150.png">
 
 to kill the sctipt simply terminate the terminal window.
 
