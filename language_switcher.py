@@ -50,6 +50,7 @@ def window_change(x, y, button, pressed):
 
 # main:
 if __name__ == '__main__':
+    start_message()
     with keyboard.Listener(on_press=register_key) as k_listener:
         with mouse.Listener(on_click=window_change) as m_listener:
             k_listener.join()

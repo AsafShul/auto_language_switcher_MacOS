@@ -6,6 +6,15 @@ import json
 import subprocess
 
 # constants:
+TITLE = """
+███████╗██╗    ██╗██╗████████╗ ██████╗██╗  ██╗███████╗██████╗ 
+██╔════╝██║    ██║██║╚══██╔══╝██╔════╝██║  ██║██╔════╝██╔══██╗
+███████╗██║ █╗ ██║██║   ██║   ██║     ███████║█████╗  ██████╔╝
+╚════██║██║███╗██║██║   ██║   ██║     ██╔══██║██╔══╝  ██╔══██╗
+███████║╚███╔███╔╝██║   ██║   ╚██████╗██║  ██║███████╗██║  ██║
+╚══════╝ ╚══╝╚══╝ ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝                                                              
+"""
+
 BUFFER_SIZE = 32
 TYPING_DILAY = 0.05
 
@@ -87,3 +96,11 @@ def convert_typing(layout, stack):
 
 
 SECONDARY_TYPING_CHANGE_ACTIVATION = convert_typing(MAIN_LAYOUT, PRIME_TYPING_CHANGE_ACTIVATION)
+
+
+def start_message():
+    print(TITLE)
+    print('=' * 65)
+    print(' ' * 25,  'Activities log:')
+    print('=' * 65)
+    print()
